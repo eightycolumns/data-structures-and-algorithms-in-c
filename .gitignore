@@ -1,0 +1,4 @@
+*.o
+
+libarrays.c
+arrays-test
