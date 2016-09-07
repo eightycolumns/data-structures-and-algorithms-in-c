@@ -15,6 +15,17 @@ static void compare_arrays(const int *expected, const int *actual, size_t n) {
   }
 }
 
+START_TEST(insertion_sort_12345_to_12345) {
+  int expected[] = {1, 2, 3, 4, 5};
+
+  int actual[] = {1, 2, 3, 4, 5};
+  size_t n = sizeof actual / sizeof actual[0];
+
+  insertion_sort(actual, n);
+
+  compare_arrays(expected, actual, n);
+} END_TEST
+
 START_TEST(insertion_sort_54321_to_12345) {
   int expected[] = {1, 2, 3, 4, 5};
 
@@ -29,6 +40,7 @@ START_TEST(insertion_sort_54321_to_12345) {
 Suite *sorting(void) {
   TCase *core = tcase_create("Core");
 
+  tcase_add_test(core, insertion_sort_12345_to_12345);
   tcase_add_test(core, insertion_sort_54321_to_12345);
 
   Suite *sorting = suite_create("Sorting");
