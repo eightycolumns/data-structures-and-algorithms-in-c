@@ -70,6 +70,17 @@ START_TEST(insertion_sort_0927456381_to_0123456789) {
   compare_arrays(expected, actual, n);
 } END_TEST
 
+START_TEST(merge_sort_3_to_3) {
+  int expected[] = {3};
+
+  int actual[] = {3};
+  size_t n = sizeof actual / sizeof actual[0];
+
+  merge_sort(actual, 0, n - 1);
+
+  compare_arrays(expected, actual, n);
+} END_TEST
+
 START_TEST(merge_sort_12345_to_12345) {
   int expected[] = {1, 2, 3, 4, 5};
 
@@ -101,6 +112,7 @@ Suite *sorting(void) {
   tcase_add_test(core, insertion_sort_543432321_to_122333445);
   tcase_add_test(core, insertion_sort_0927456381_to_0123456789);
 
+  tcase_add_test(core, merge_sort_3_to_3);
   tcase_add_test(core, merge_sort_12345_to_12345);
   tcase_add_test(core, merge_sort_54321_to_12345);
 
