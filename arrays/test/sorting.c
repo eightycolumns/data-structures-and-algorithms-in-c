@@ -103,6 +103,17 @@ START_TEST(merge_sort_54321_to_12345) {
   compare_arrays(expected, actual, n);
 } END_TEST
 
+START_TEST(merge_sort_543432321_to_122333445) {
+  int expected[] = {1, 2, 2, 3, 3, 3, 4, 4, 5};
+
+  int actual[] = {5, 4, 3, 4, 3, 2, 3, 2, 1};
+  size_t n = sizeof actual / sizeof actual[0];
+
+  merge_sort(actual, 0, n - 1);
+
+  compare_arrays(expected, actual, n);
+} END_TEST
+
 Suite *sorting(void) {
   TCase *core = tcase_create("Core");
 
@@ -115,6 +126,7 @@ Suite *sorting(void) {
   tcase_add_test(core, merge_sort_3_to_3);
   tcase_add_test(core, merge_sort_12345_to_12345);
   tcase_add_test(core, merge_sort_54321_to_12345);
+  tcase_add_test(core, merge_sort_543432321_to_122333445);
 
   Suite *sorting = suite_create("Sorting");
   suite_add_tcase(sorting, core);
